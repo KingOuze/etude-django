@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchex</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Mes groupes préférés</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Genre</th>
+            <th>Biographie</th>
+            <th>Année</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for band in bands %}
+        <tr>
+            <td>{{ band.id }}</td>
+            <td>{{ band.name }}</td>
+            <td>{{ band.genre }}</td>
+            <td>{{ band.biograohy }}</td>
+            <td>{{ band.yeard_formed }}</td>
+            {% if band.active %}
+            <td>actif</td>
+            {% endif %}
+            {% if band.active == False %}
+            <td>inactif</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Mes Listing Preferes</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Année</th>
+            <th>Type</th>
+            <th>Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+       {% for liste in listes %}
+        <tr>
+            <td>{{ liste.id }}</td>
+            <td>{{ liste.name }}</td>
+            <td>{{ liste.description }}</td>
+            <td>{{ liste.year }}</td>
+            <td>{{ liste.type }}</td>
+
+            {% if list.sold %}
+            <td>Vendu</td>
+            {% endif %}
+            {% if list.sold == False %}
+            <td>En Stock</td>
+            {% endif %}
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
