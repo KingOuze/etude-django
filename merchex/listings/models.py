@@ -1,5 +1,5 @@
-from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db import models # type: ignore
+from django.core.validators import MinValueValidator, MaxValueValidator # type: ignore
 
 class Band(models.Model):
 
@@ -18,6 +18,9 @@ class Band(models.Model):
     active = models.fields.BooleanField(default=False)
     official_homepage = models.fields.URLField(max_length=100)
 
+    def __str__(self):
+        return f'{self.name}'
+
 class Listing(models.Model):
 
     class types(models.Choices):
@@ -31,3 +34,6 @@ class Listing(models.Model):
     sold = models.fields.BooleanField(default=False)
     year = models.fields.IntegerField(blank=True,null=True)
     type = models.fields.CharField(choices=types.choices)
+    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
+
+
